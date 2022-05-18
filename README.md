@@ -1,7 +1,7 @@
 
 # mailarchiva: dockerized - ✉️ + 🐋 = 💕
 
-Run Mailarchiva in Docker!
+Run [Mailarchiva, the email archiving, e-discovery, compliance and forensics platform that helps to retain, organize and mine email data] (https://www.mailarchiva.com/) in Docker!
 
 ## Motivation
 
@@ -31,7 +31,7 @@ That's why I created this project.
    ```
 
 4. Create a copy of the .env file and adjust it to your needs.
-```sh
+   ```sh
    cp env.sample .env
    ```
 5. (optional) Adapt docker-compose.yaml if needed
@@ -49,6 +49,7 @@ todo
 - [ ] Automate Download of Mailarchiva WAR file
 - [ ] Move from debian image to something smaller (less bloat, quicker build)
 - [ ] Add instructions to update Mailarchiva to a newer version
+- [ ] Add support for SSL Certificate using Traefik
 
 # Reference
 - https://github.com/bytecast-de/docker-mailarchiva 
