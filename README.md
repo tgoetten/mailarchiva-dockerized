@@ -1,7 +1,7 @@
 
 # mailarchiva: dockerized - ✉️ + 🐋 = 💕
 
-Run [Mailarchiva, the email archiving, e-discovery, compliance and forensics platform that helps to retain, organize and mine email data] (https://www.mailarchiva.com/) in Docker!
+Run [Mailarchiva, the email archiving, e-discovery, compliance and forensics platform that helps to retain, organize and mine email data](https://www.mailarchiva.com/) in Docker!
 
 ## Motivation
 
@@ -34,7 +34,7 @@ That's why I created this project.
    ```sh
    cp env.sample .env
    ```
-5. (optional) Adapt docker-compose.yaml if needed
+5. (optional) Adapt ``docker-compose.yaml if needed
 
 6. Start
    ```sh
