@@ -27,7 +27,7 @@ That's why I created this project.
 
 3. Download latest Mailarchiva WAR file from https://stimulussoft.com/downloads and save it in `files/`
    ```sh
-   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.11.56.war -P files
+   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.11.60.war -P files
    ```
 
 4. Create a copy of the .env file and adjust it to your needs.
@@ -46,12 +46,12 @@ Before you perform the update steps above it is highly recommended to first crea
 
 1. Download latest Mailarchiva WAR file from https://stimulussoft.com/downloads and save it in `files/`
    ```sh
-   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.11.56.war -P files
+   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.11.60.war -P files
    ```
 
 2. Update `Dockerfile` to use the new .war file when (re-) building the image. To do this, just update the ENV variable with the new .war filenmae
    ```
-   ENV MAILARCHIVA_WAR=mailarchiva_v8.11.56.war \
+   ENV MAILARCHIVA_WAR=mailarchiva_v8.11.60.war \
    ...
    ```
 3. Build image
