@@ -7,6 +7,9 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+    #tmpfs:
+    #  - /tmp/mailarchiva
+    #  - /tmp/hsperfdata_root
     volumes:
       - ${MAILARCHIVA_HOST_DATA_FOLDER}/appdata:/var/opt/mailarchiva
       - ${MAILARCHIVA_HOST_DATA_FOLDER}/storage:/var/opt/vol
