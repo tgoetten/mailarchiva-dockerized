@@ -15,7 +15,7 @@ ENV if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$
     && JAVA_HOME="/usr/lib/jvm/java-8-openjdk-${ARCHITECTURE}/jre"
 
 # (further) set environment variables relevant for Tomcat
-ENV MAILARCHIVA_WAR=mailarchiva_v8.11.60.war \
+ENV MAILARCHIVA_WAR=mailarchiva_v8.12.16.war \
     TOMCAT_MAJOR=7 \
     TOMCAT_VERSION=7.0.109 \
     TOMCAT_HOME=/opt/tomcat \

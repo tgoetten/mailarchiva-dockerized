@@ -5,7 +5,7 @@ Run [Mailarchiva, the email archiving, e-discovery, compliance and forensics pla
 
 ## Motivation
 
-The existing projects, which try to run Mailarchiva as a Docker container, are outdated and not working any more. 
+The existing projects, which try to run Mailarchiva as a Docker container, are outdated and not working anymore. 
 I also disliked that they all tried to mimic the traditional on premise installation which is not necessary for a Tomcat application.
 
 That's why I created this project.
@@ -27,7 +27,7 @@ That's why I created this project.
 
 3. Download latest Mailarchiva WAR file from https://stimulussoft.com/downloads and save it in `files/`
    ```sh
-   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.11.60.war -P files
+   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.12.16.war -P files
    ```
 
 4. Create a copy of the .env file and adjust it to your needs.
@@ -46,10 +46,10 @@ Before you perform the update steps above it is highly recommended to first crea
 
 1. Download latest Mailarchiva WAR file from https://stimulussoft.com/downloads and save it in `files/`
    ```sh
-   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.11.60.war -P files
+   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.12.16.war -P files
    ```
 
-2. Update `Dockerfile` to use the new .war file when (re-) building the image. To do this, just update the ENV variable with the new .war filenmae
+2. Update `Dockerfile` to use the new .war file when (re-) building the image. To do this, just update the ENV variable with the new .war filename
    ```
    ENV MAILARCHIVA_WAR=mailarchiva_v8.11.60.war \
    ...
@@ -63,7 +63,30 @@ Before you perform the update steps above it is highly recommended to first crea
    docker-compose stop && docker-compose up -d
    ```
 
-Login to Mailarchiva an make sure the version has changed.
+Login to Mailarchiva and make sure the version has changed.
+
+# Disk usage
+
+Mailarchiva will frequently write temporary files that in a NAS environment can prevent 
+the disks from spinning down even if there is no activity on the mail servers.
+
+In particular, JDK `jstat` will write to `/tmp/hsperfdata_root/1` and Mailalchiva will use `/etc/ROOT/performance.stat` to display `/status.do?page=chart`.
+
+To prevent this, in docker-compose.yaml, mount two tmpfs volumes.
+   ```yaml
+   services:
+     mailarchiva:
+       tmpfs:
+         - /tmp/mailarchiva
+         - /tmp/hsperfdata_root
+   ```
+
+A singular file can not be mounted to tmpfs. Luckily, Mailarchiva will follow a symlink, but we need to create it in the local `etc` storage.
+   ```sh
+   cd etc/ROOT
+   ln -s performance.stat /tmp/mailarchiva/performance.stat
+   ```
+
 # Todos
 
 - [ ] Automate Download of Mailarchiva WAR file
