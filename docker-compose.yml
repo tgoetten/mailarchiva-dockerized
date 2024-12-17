@@ -1,8 +1,9 @@
-version: "3.7"
-
 services:
   mailarchiva:
-    build: ./
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      # dockerfile: Dockerfile8 # <- enable to (keep) using version 8 of Mailarchiva
     image: mailarchiva:latest
     restart: unless-stopped
     ports:
