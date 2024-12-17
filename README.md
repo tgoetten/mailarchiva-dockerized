@@ -15,8 +15,7 @@ That's why I created this project.
 
 - A Unix-like operating system: macOS, Linux, BSD.
 - ```git``` should be installed (recommended v2.36.1 or higher)
-- Docker >= 20.10.14
-- Docker-Compose >= v2.5.0
+- Docker >= 27.4.0
 
 ## Installation
 
@@ -27,7 +26,8 @@ That's why I created this project.
 
 3. Download latest Mailarchiva WAR file from https://stimulussoft.com/downloads and save it in `files/`
    ```sh
-   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.12.16.war -P files
+   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.12.16.war -P files # for (old) Mailarchiva v8
+   wget https://stimulussoft.b-cdn.net/mailarchiva-9.0.36.war -P files/
    ```
 
 4. Create a copy of the .env file and adjust it to your needs.
@@ -46,12 +46,12 @@ Before you perform the update steps above it is highly recommended to first crea
 
 1. Download latest Mailarchiva WAR file from https://stimulussoft.com/downloads and save it in `files/`
    ```sh
-   wget https://stimulussoft.b-cdn.net/mailarchiva_v8.12.16.war -P files
+   wget wget https://stimulussoft.b-cdn.net/mailarchiva-9.0.36.war -P files
    ```
 
 2. Update `Dockerfile` to use the new .war file when (re-) building the image. To do this, just update the ENV variable with the new .war filename
    ```
-   ENV MAILARCHIVA_WAR=mailarchiva_v8.11.60.war \
+   ENV MAILARCHIVA_WAR=mailarchiva-9.0.36.war \
    ...
    ```
 3. Build image
@@ -64,6 +64,10 @@ Before you perform the update steps above it is highly recommended to first crea
    ```
 
 Login to Mailarchiva and make sure the version has changed.
+
+## Upgrade from version 8 to version 9
+
+Upgrading from version 8 to version 9 is done by either updating or replacing the Dockerfile and then build a new image same as done through the update step.
 
 # Disk usage
 
@@ -90,7 +94,7 @@ A singular file can not be mounted to tmpfs. Luckily, Mailarchiva will follow a 
 # Todos
 
 - [ ] Automate Download of Mailarchiva WAR file
-- [ ] Move from debian image to something smaller (less bloat, quicker build)
+- [X] ~~Move from debian image to something smaller (less bloat, quicker build)~~
 - [X] ~~Add instructions to update Mailarchiva to a newer version~~
 - [ ] Add support for SSL Certificate using Traefik
 
